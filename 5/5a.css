@@ -1,0 +1,10 @@
+b{ display:block;color:white;font-style:italic;}
+e{ display:block;color:rgb(255, 169, 169);font-style:italic;}
+s{ display:block;color:rgb(164, 255, 103);font-style:italic;}
+c{ display:block;color:white;font-style:italic;}
+o{ display:block;color:rgb(0, 255, 213);font-style:italic;}
+b,e,s,c,o{
+    font-size: 25px;
+    background-color: rgba(0, 0, 0, 50%);
+    padding: 5px;
+}

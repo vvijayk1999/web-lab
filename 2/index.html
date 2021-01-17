@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <title>Student Registration</title>
+    </head>
+    <body>
+        <div align="center" >
+            <h1>Student Registration Portal</h1>
+                <label for="name">Enter name: </label>
+                <input type="text" id="name" /><br /><br>
+                <label for="dob">Select date of birth: </label>
+                <input type="date" id="dob" /><br /><br>
+                <label for="branch">Enter branch: </label>
+                <input type="text" id="branch" /><br /><br>
+                <label for="semester">Select Semester: </label>
+                <input type="number" id="semester" max="8" min="1" /><br /><br>
+                <label for="sem"> Drop select
+                    <select id="sem">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </label><br><br>
+                <label for="doj">Select date of joining: </label>
+                <input type="date" id="doj" /><br /><br>
+                <label for="university">Enter University Name: </label>
+                <input type="text" id="university" /><br /><br>
+                <label for="mobile">Enter mobile number: </label>
+                <input type="text" id="mobile" /><br /><br>
+                <label for="email_add">Enter email: </label>
+                <input type="email" id="email_add" /><br /><br>
+            <button onclick="validate()">Submit</button>
+                <span id="result"></span>
+        </div>
+    </body>
+    <script>
+    function validate()
+    {
+        var result_text = document.getElementById("result");
+        var dob = document.getElementById("dob").value;
+        var birth_year = parseInt(dob.substring(0, 4));
+        var doj = document.getElementById("doj").value;
+        var join_year = parseInt(doj.substring(0,4));
+        var email = document.getElementById("email_add").value;
+        var branch = document.getElementById("branch").value;
+        var mobile_no = document.getElementById("mobile").value;
+        result_text.innerHTML = "";
+        var error = false;
+
+        if (join_year - birth_year < 17)
+        {
+            result_text.innerHTML += "<h3>Too young to have started college!<h3><br>";
+            error = true;
+        }
+        if (branch.search(/(CSE|ECE|ME|CE|EEE|BCA|MCA)/) == -1)
+        {
+            result_text.innerHTML += "Invalid branch!<br>";
+            error = true;
+        }
+        if (mobile_no.search(/^[0-9]+$/) == -1 || mobile_no.length != 10)
+        {
+            result_text.innerHTML += "Invalid mobile number!<br>";
+            error = true;
+        }
+        if (email.search(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/) == -1)
+        {
+            result_text.innerHTML += "Invalid email ID<br>";
+            error = true;
+        }
+        if(!error)
+        {
+            alert('Successfully transmitted data!');
+            result_text.innerHTML = "Success!";
+        }
+    }
+    </script>
+</html>
